@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock title %}
+
+{% block body %}
+
+{% if messages %}
+{% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+{% endif %}
+
+<div class="container">
+<div class="row">
+<div class="col-md-5 offset-3 mt-3 mb-2"> <h3 style="background-color:green; padding:4px; text-align:center;color:white;border-radius:5px;"> Patient Details </h3> </div>
+<table class="table table-hover" id="example">
+        <thead>
+        <tr>
+            <th>Sr No.</th>
+            <th>Patient Name</th>
+            <th>Mobile No</th>
+            <th>Location</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in patient %}
+        <tr>
+        <td>
+                {{ forloop.counter }}
+            </td>
+            <td>
+                {{p.Name}}
+            </td>
+                        <td>
+                {{p.Mobile_No}}
+            </td>
+            <td>
+                {{p.Location}}
+            </td>
+                <td>
+                <a href="{% url 'delete-patient' p.id %}" onclick="return confirm('Are You really want to delete!!')"
+                   class="btn btn-danger">Delete</a>
+            </td>
+           <td>
+                <a href="{% url 'update-patient' p.id %}" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+
+</div>
+</div>
+
+{% endblock body %}

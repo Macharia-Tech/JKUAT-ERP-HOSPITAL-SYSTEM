@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center"> Admin Login</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>Admin Name:</label>
+        <input type="text" class="form-control" name="username">
+        <label> Password: </label>
+        <input type="password" class="form-control" name="password">
+        <br>
+        <input type="submit" value="login" class="form-control btn btn-primary">
+
+
+    </form>
+
+
+</div>
+
+
+{% endblock %}

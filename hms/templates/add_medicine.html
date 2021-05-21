@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Add-Medicine {% endblock title %}
+
+{% block body %}
+
+{% if messages %}
+{% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+{% endif %}
+
+<div class="container">
+<div class="row">
+<div class="col-md-5 offset-3 mt-3 mb-2"> <h3 style="background-color:green; padding:4px; text-align:center;color:white;border-radius:5px;"> Add Medicine </h3> </div>
+<form action="" method="post" class="shadow p-5">
+{% csrf_token %}
+<label>Medicine Name:</label>
+<input type="text" class="form-control" name="name" required placeholder="Enter Medicine Name">
+<label>Medicine Code:</label>
+<input type="text" class="form-control" name="code" required placeholder="Enter Medicine Code">
+<label> Company Name: </label>
+<input type="text" class="form-control" name="cname" required placeholder="Enter Medicine Brand Name">
+<br>
+<input type="submit" value="save" class="form-control btn btn-primary">
+</form>
+</div>
+</div>
+
+{% endblock body %}

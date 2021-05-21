@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %} View-Doctor {% endblock title %}
+
+{% block body %}
+
+{% if messages %}
+{% for message in messages %}
+<script>
+alert('{{message}}');
+</script>
+{% endfor %}
+{% endif %}
+
+<div class="container">
+<div class="row">
+<div class="col-md-5 offset-3 mt-3 mb-2"> <h3 style="background-color:green; padding:4px; text-align:center;color:white;border-radius:5px;"> Doctor Details </h3> </div>
+
+<table class="table table-hover" id="example">
+        <thead>
+        <tr>
+            <th>Sr No.</th>
+            <th>Doctor Name</th>
+            <th>Doctor Code</th>
+            <th>Mobile Number</th>
+            <th>Location</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for d in doctor %}
+        <tr>
+        <td>
+                {{ forloop.counter }}
+            </td>
+            <td>
+                {{d.Name}}
+            </td>
+                        <td>
+                {{d.Code}}
+            </td>
+            <td>
+                {{d.Mobile_No}}
+            </td>
+            <td>
+                {{d.Location}}
+            </td>
+                <td>
+                <a href="{% url 'delete-doctor' d.id %}" onclick="return confirm('Are You really want to delete!!')"
+                   class="btn btn-danger">Delete</a>
+            </td>
+           <td>
+                <a href="{% url 'update-doctor' d.id %}" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+
+</div>
+</div>
+
+{% endblock body %}
